@@ -47,10 +47,10 @@ $(NAME):
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-clear: $(OBJ)
+clean: $(OBJ)
 	rm -rf $(OBJ)
 
-fclear: clear
+fclean: clear
 	rm -rf $(NAME)
 
 re: fclear all

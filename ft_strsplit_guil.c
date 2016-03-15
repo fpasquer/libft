@@ -6,7 +6,7 @@
 /*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 10:31:15 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/03/13 09:08:20 by fpasquer         ###   ########.fr       */
+/*   Updated: 2016/03/15 14:27:24 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static char					**end_split(char **tab, char *s, char c)
 {
 	char					**ret_s;
 	char					**ret;
-
 
 	if (tab == NULL)
 		return (ft_strsplit(s, c));
@@ -78,7 +77,6 @@ char						**join_2_tabs_2d(char **tab1, char **tab2)
 	unsigned int			i;
 	unsigned int			j;
 
-
 	y1 = tab1 == NULL ? 0 : len_y(tab1);
 	y2 = tab2 == NULL ? 0 : len_y(tab2);
 	if ((ret = ft_memalloc(sizeof(char *) * (y1 + y2 + 1))) == NULL)
@@ -96,7 +94,6 @@ char						**join_2_tabs_2d(char **tab1, char **tab2)
 				return (NULL);
 	return (ret);
 }
-
 
 char						**ft_strsplit_guil(char *s, char c)
 {
@@ -123,5 +120,5 @@ char						**ft_strsplit_guil(char *s, char c)
 			return (NULL);
 		s = end + 1;
 	}
-	return (ret);
+	return (ret == NULL ? ft_strsplit(s, c) : ret);
 }
