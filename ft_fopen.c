@@ -6,7 +6,7 @@
 /*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/13 13:54:45 by fpasquer          #+#    #+#             */
-/*   Updated: 2015/11/24 22:17:57 by fpasquer         ###   ########.fr       */
+/*   Updated: 2016/06/02 10:11:36 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int					ft_fopen(const char *name, const char *mode)
 	else if (ft_strequ(LECT_ECR, mode))
 		fd = open(name, O_RDWR);
 	else if (ft_strequ(ECR, mode))
-		fd = open(name, O_WRONLY);
+		fd = open(name, O_WRONLY | O_TRUNC);
 	else if (ft_strequ(LECT_ECR_CRE, mode))
-		fd = open(name, O_RDWR | O_CREAT, MODE_CREATION);
+		fd = open(name, O_RDWR | O_CREAT | O_TRUNC, MODE_CREATION);
 	else if (ft_strequ(AJOU_FIN, mode))
 	{
 		if ((fd = open(name, O_RDWR | O_APPEND)) == ERROR)

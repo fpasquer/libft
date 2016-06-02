@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_is_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
+/*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/10 12:22:36 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/05/31 18:26:25 by fpasquer         ###   ########.fr       */
+/*   Created: 2016/03/31 10:12:59 by fpasquer          #+#    #+#             */
+/*   Updated: 2016/05/17 11:44:53 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_isalnum(int c)
+int					ft_is_number(char *nb)
 {
-	return ((ft_isalpha(c) || ft_isdigit(c)) ? 1 : 0);
+	int						i;
+
+	i = 0;
+	while (ft_isspace(nb[i]) == 1)
+		i++;
+	if (nb[i] == '-' || nb[i] == '+')
+		i++;
+	if (nb[i] == '\0')
+		return (0);
+	while (nb[i] != '\0')
+		if (ft_isdigit(nb[i++]) != 1)
+			return (0);
+	return (i == 0 ? 0 : 1);
 }

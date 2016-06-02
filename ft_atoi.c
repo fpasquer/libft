@@ -6,17 +6,17 @@
 /*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 10:23:21 by fpasquer          #+#    #+#             */
-/*   Updated: 2015/12/09 17:46:03 by fpasquer         ###   ########.fr       */
+/*   Updated: 2016/04/21 10:06:05 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *nptr)
+long long int				ft_atoi(const char *nptr)
 {
-	unsigned int	nb;
-	unsigned int	limit;
-	int				signe;
+	unsigned long long int	nb;
+	unsigned long long int	limit;
+	int						signe;
 
 	signe = 1;
 	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t' || *nptr == '\r' ||
@@ -25,7 +25,7 @@ int			ft_atoi(const char *nptr)
 	if (*nptr == '+' || *nptr == '-')
 		if (*nptr++ == '-')
 			signe = -1;
-	limit = (signe == 1) ? FT_INT_MAX : (unsigned int)FT_INT_MIN * -1;
+	limit = (signe == 1) ? LLONG_MAX : (unsigned long long int)LLONG_MIN * -1;
 	nb = 0;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
@@ -36,5 +36,5 @@ int			ft_atoi(const char *nptr)
 			return (limit);
 		nb += *nptr++ - '0';
 	}
-	return ((int)nb * signe);
+	return ((long long int)nb * signe);
 }

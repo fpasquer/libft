@@ -6,7 +6,7 @@
 /*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/02 21:31:48 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/03/15 14:28:13 by fpasquer         ###   ########.fr       */
+/*   Updated: 2016/04/21 10:05:51 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define DEDANS 1
 # define DEHORS 0
-
-# define FT_INT_MAX 2147483647
-# define FT_INT_MIN -2147483648
 
 # define HEAD 1
 # define TAIL 2
@@ -82,7 +80,7 @@ char				*ft_strnstr(const char *meule, const char
 						*aiguille, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *nptr);
+long long int		ft_atoi(const char *nptr);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -170,8 +168,10 @@ long long int		ft_abs(long long int nb);
 char				*ft_strdup_and_len(const char *s, size_t *len);
 size_t				ft_nblen(long long int nb);
 size_t				len_y(char **tab);
+
 char				**join_tab2d_str(char **tab, char *str, int where);
 char				**join_2_tabs_2d(char **tab1, char **tab2);
 char				**ft_strsplit_guil(char *s, char c);
+int					ft_is_number(char *s);
 
 #endif

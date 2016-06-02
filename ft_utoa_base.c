@@ -6,7 +6,7 @@
 /*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:13:41 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/03/15 14:26:45 by fpasquer         ###   ########.fr       */
+/*   Updated: 2016/03/30 08:52:45 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ char				*ft_utoa_base(unsigned long long int nb,
 		return (NULL);
 	if (nb == 0)
 	{
-		if ((ret = ft_memalloc(sizeof(char) * (loop > 0 ? loop + 1 : 2)))
-				== NULL)
+		if ((ret = ft_memalloc(sizeof(char) * (loop > 0 ? loop + 1 : 2))) ==
+				NULL)
 			return (NULL);
 		if (loop == 0)
 			ret[0] = '0';
