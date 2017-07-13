@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/24 21:49:10 by fpasquer          #+#    #+#              #
-#*   Updated: 2016/03/13 09:23:30 by fpasquer         ###   ########.fr       *#
+#    Created: 2017/01/27 22:00:29 by fpasquer          #+#    #+#              #
+#    Updated: 2017/07/12 11:43:01 by fpasquer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ SRC = ft_atoi.c ft_bzero.c ft_clrscr.c ft_error.c ft_fopen.c ft_free_strsplit.c	
 	ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strndup.c ft_strnequ.c ft_strnew.c\
 	ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c\
 	ft_tolower.c ft_toupper.c ft_utoa_base.c get_next_line.c get_y.c ft_abs.c	\
-	ft_nblen.c len_y.c ft_strsplit_guil.c ft_is_number.c ft_atoi_base.c
+	ft_nblen.c len_y.c ft_strsplit_guil.c ft_is_number.c ft_atoi_base.c			\
+	ft_count_char.c ft_getenv.c ft_add_to_array.c ft_is_dir.c ft_scandir.c		\
+	ft_free_add_to_array.c ft_trim.c ft_implode.c ft_qsort.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -47,7 +49,7 @@ $(NAME):
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-clear: $(OBJ)
+clear:
 	rm -rf $(OBJ)
 
 fclear: clear

@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_add_to_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 21:57:46 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/01/27 21:57:47 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/01/27 21:48:00 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/05/24 08:54:12 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strncat(char *dest, const char *src, size_t n)
+char			**ft_add_to_array(char *str, char **list)
 {
-	unsigned int	i;
-	unsigned int	j;
+	char		**new;
+	int			len_list;
+	int			i;
 
-	i = ft_strlen(dest);
-	j = 0;
-	while (src[j] != '\0' && j < n)
-		dest[i++] = (char)src[j++];
-	dest[i] = '\0';
-	return (dest);
+	new = NULL;
+	if (ft_strlen(str) == 0)
+		return (list);
+	len_list = len_y(list);
+	i = 0;
+	if ((new = (char**)ft_memalloc(sizeof(char*) * (len_list + 2))) == NULL)
+		return (NULL);
+	if (len_list > 0)
+		while (list[i])
+		{
+			new[i] = list[i];
+			i++;
+		}
+	new[i++] = str;
+	new[i] = NULL;
+	if (list)
+		free(list);
+	return (new);
 }

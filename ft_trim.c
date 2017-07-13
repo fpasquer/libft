@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rand.c                                          :+:      :+:    :+:   */
+/*   ft_trim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 21:55:34 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/07/12 13:16:55 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/05/24 14:42:30 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/06/20 09:30:26 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <time.h>
 
-int				ft_rand(int min, int max)
+char						*ft_trim(char *str)
 {
-	static int	loop = 0;
+	size_t					start;
+	size_t					end;
 
-	if (loop == 0)
-	{
-		srand(time(NULL));
-		loop = 1;
-	}
-	return ((rand() % (max - min + 1)) + min);
+	start = 0;
+	while (ft_isspace(str[start]))
+		start++;
+	end = ft_strlen(&str[start]);
+	while (ft_isspace(str[start + end - 1]))
+		if (end-- == 0)
+			break ;
+	return ((end > 0) ? ft_strndup(&str[start], end) : ft_strdup(""));
 }

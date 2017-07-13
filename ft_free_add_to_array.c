@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_free_add_to_array.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 21:57:46 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/01/27 21:57:47 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/05/24 09:00:20 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/05/24 09:03:40 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strncat(char *dest, const char *src, size_t n)
+bool						ft_free_add_to_array(char **array)
 {
-	unsigned int	i;
-	unsigned int	j;
-
-	i = ft_strlen(dest);
-	j = 0;
-	while (src[j] != '\0' && j < n)
-		dest[i++] = (char)src[j++];
-	dest[i] = '\0';
-	return (dest);
+	if (array == NULL)
+		return (false);
+	ft_memdel((void**)&array);
+	return (true);
 }

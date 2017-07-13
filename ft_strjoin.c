@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
+/*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/12 09:22:45 by fpasquer          #+#    #+#             */
-/*   Updated: 2015/11/24 22:24:29 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/01/27 21:56:58 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/05/15 15:52:49 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char		*ft_strjoin(const char *s1, const char *s2)
 		len += ft_strlen(s1);
 	if (s2 != NULL)
 		len += ft_strlen(s2);
-	if ((new_s = (char*)malloc(sizeof(*new_s) * len + 1)) == NULL)
+	if ((new_s = (char*)ft_memalloc(sizeof(*new_s) * len + 1)) == NULL)
 		return (NULL);
 	i = 0;
 	len = 0;

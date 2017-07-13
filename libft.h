@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
+/*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/02 21:31:48 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/04/21 10:05:51 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/01/27 22:00:20 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/07/12 11:42:47 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <dirent.h>
+# include <time.h>
+# include <stdbool.h>
 
 # define DEDANS 1
 # define DEHORS 0
@@ -134,12 +139,11 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 */
 
 unsigned int		ft_strlen_wout_spc_be(const char *s);
-char				**ft_free_strsplit(char **tab);
+char				**ft_free_strsplit(char **tabl);
 char				*ft_itoa_base(long long int nb, const unsigned int base);
 char				*ft_utoa_base(unsigned long long int nb,
 		const unsigned int base);
 void				*ft_move_octe(void *s, char del, size_t n);
-void				ft_error(const char *s);
 int					ft_fopen(const char *name, const char *mode);
 char				*ft_gets_stdin(char *buff, size_t n);
 double				ft_get_decimal(const double nb, double *decimal);
@@ -167,11 +171,25 @@ unsigned int		get_y(const char *s, char c);
 long long int		ft_abs(long long int nb);
 char				*ft_strdup_and_len(const char *s, size_t *len);
 size_t				ft_nblen(long long int nb);
-size_t				len_y(char **tab);
-
-char				**join_tab2d_str(char **tab, char *str, int where);
+size_t				len_y(char **tabl);
+char				*ft_getenv(char **env, const char *name);
+char				**join_tab2d_str(char **tabl, char *str, int where);
 char				**join_2_tabs_2d(char **tab1, char **tab2);
 char				**ft_strsplit_guil(char *s, char c);
 int					ft_is_number(char *s);
+int					ft_atoi_base(const char *s, int base, int *nb);
+int					count_char(char *line, char c);
+char				**ft_add_to_array(char *str, char **list);
+int					ft_is_dir(char *path);
+bool				ft_free_add_to_array(char **array);
+int					ft_scandir(char *path, char ***list);
+char				*ft_trim(char *str);
+char				*ft_implode(char *glue, char **list);
+void				ft_error(const char *s, const char *function,
+		void (*f)(void*), void *ptr);
+void				ft_qsort(void *base, size_t nel, size_t width,
+		int (*compar)(const void *, const void *));
+
+# define ERROR_EXIT(s, f, fun, ptr) {ft_error(s, f, fun, ptr); exit(-1);}
 
 #endif

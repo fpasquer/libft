@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rand.c                                          :+:      :+:    :+:   */
+/*   ft_is_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 21:55:34 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/07/12 13:16:55 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/05/24 07:56:11 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/06/20 09:31:34 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <time.h>
 
-int				ft_rand(int min, int max)
+/*
+**	DESCRIPTION :
+**		int ft_is_dir(char *path)
+**		indique si le path pointe vers un dossier
+**	PARAMETRE :
+**		Path vers le dossier
+**	RETOUR :
+**		Retourne true si c'est un dossier sinon false ou -1
+*/
+
+int							ft_is_dir(char *path)
 {
-	static int	loop = 0;
+	struct stat				s;
 
-	if (loop == 0)
-	{
-		srand(time(NULL));
-		loop = 1;
-	}
-	return ((rand() % (max - min + 1)) + min);
+	if (stat(path, &s) == -1)
+		return (-1);
+	return (((s.st_mode & S_IFMT) == S_IFDIR) ? true : false);
 }

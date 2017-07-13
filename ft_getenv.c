@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 21:56:34 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/01/27 21:56:35 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/01/27 21:50:12 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/02/03 22:30:58 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s)
+char						*ft_getenv(char **env, const char *name_tmp)
 {
-	char			*dup;
-	unsigned int	len;
+	char					*name;
+	int						i;
+	size_t					len_name;
 
-	len = ft_strlen(s);
-	if ((dup = malloc((len + 1) * sizeof(char))) == NULL)
+	if (env == NULL || *env == NULL || name_tmp == NULL)
 		return (NULL);
-	dup[len] = '\0';
-	return (ft_strcpy(dup, s));
-}
-
-char		*ft_strdup_and_len(const char *s, size_t *len)
-{
-	char			*dup;
-	size_t			i;
-
-	*len = ft_strlen(s);
+	if ((name = ft_strjoin(name_tmp, "=")) == NULL)
+		return (NULL);
+	if ((len_name = ft_strlen(name)) <= 0)
+		return (NULL);
 	i = 0;
-	if ((dup = malloc((*len + 1) * sizeof(char))) != NULL)
+	while (env[i] != NULL)
 	{
-		while (i < *len)
+		if (ft_strncmp(env[i++], name, len_name) == 0)
 		{
-			dup[i] = s[i];
-			i++;
+			ft_memdel((void**)&name);
+			return (env[i - 1] + len_name);
 		}
-		dup[*len] = '\0';
 	}
-	return (dup);
+	ft_memdel((void**)&name);
+	return (NULL);
 }

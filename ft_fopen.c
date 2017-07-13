@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fopen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fpasquer <florianpasquereau37@gmail.com>   +#+  +:+       +#+        */
+/*   By: fpasquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/13 13:54:45 by fpasquer          #+#    #+#             */
-/*   Updated: 2016/06/02 10:11:36 by fpasquer         ###   ########.fr       */
+/*   Created: 2017/01/27 21:49:49 by fpasquer          #+#    #+#             */
+/*   Updated: 2017/01/27 21:49:52 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,6 @@
 #define ERROR -1
 #define MODE_CREATION 00664
 
-static int			print_error(const char *name, const char *mode)
-{
-	ft_error(name);
-	ft_error(" a echoue en mode ");
-	ft_error(mode);
-	return (ERROR);
-}
-
 int					ft_fopen(const char *name, const char *mode)
 {
 	int		fd;
@@ -87,5 +79,5 @@ int					ft_fopen(const char *name, const char *mode)
 		if ((fd = open(name, O_RDWR)) == ERROR)
 			fd = open(name, O_RDWR | O_CREAT, MODE_CREATION);
 	}
-	return ((fd == ERROR) ? print_error(name, mode) : fd);
+	return ((fd == ERROR) ? ERROR : fd);
 }
