@@ -6,7 +6,7 @@
 /*   By: fpasquer <fpasquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 18:09:27 by fpasquer          #+#    #+#             */
-/*   Updated: 2017/07/13 09:09:38 by fpasquer         ###   ########.fr       */
+/*   Updated: 2017/07/18 09:35:45 by fpasquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static void					*get_tmp(size_t width)
 {
 	static void				*tmp = NULL;
+	static size_t			size = 0;
 
-	if (tmp == NULL)
+	if (size != width)
+		ft_memdel((void**)&tmp);
+	if (tmp == NULL && (size = width) > 0)
 		tmp = ft_memalloc(width);
 	return (tmp);
 }
@@ -64,11 +67,9 @@ void						loop_qsort(void *base, size_t nel, size_t width,
 void						ft_qsort(void *base, size_t nel, size_t width,
 		int (*compar)(const void *, const void *))
 {
-	void					*tmp;
-
-	if (nel <= 1)
+	if (nel <= 1 || width <= 0)
 		return ;
+	get_tmp(width);
 	loop_qsort(base, nel, width, compar);
-	if ((tmp = get_tmp(0)) != NULL)
-		ft_memdel((void**)&tmp);
+	get_tmp(0);
 }
